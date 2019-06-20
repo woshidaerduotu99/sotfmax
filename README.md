@@ -1,6 +1,5 @@
 # sotfmax
 import numpy as np
-import torch
 
 
 class Solfmax:
@@ -16,6 +15,9 @@ class Solfmax:
         sum_ex = np.sum(ex)
         self.solfmax = ex / sum_ex
         return self.solfmax
+        
+    def cross_entropy(a, y):
+        return np.sum(np.nan_to_num(-y*np.log(a)-(1-y)*np.log(1-a)))
 
     def get_grad(self):
         self.grad = self.solfmax[:, np.newaxis] * self.solfmax[np.newaxis, :]
@@ -28,3 +30,4 @@ class Solfmax:
         self.get_grad()
         self.dnx = np.sum(self.grad * dl, axis=1)
         return self.dnx
+        
