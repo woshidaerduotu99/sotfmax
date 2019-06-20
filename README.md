@@ -4,6 +4,7 @@ import torch
 
 
 class Solfmax:
+
     def __init__(self):
         self.softmax = None
         self.grad = None
